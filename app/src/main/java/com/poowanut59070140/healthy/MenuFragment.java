@@ -11,12 +11,14 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.poowanut59070140.healthy.weight.WeightFragment;
 
 import java.util.ArrayList;
 
-public class MenuFragment extends Fragment {
+public class MenuFragment extends Fragment{
 
     ArrayList<String> menu = new ArrayList<>();
 
@@ -34,11 +36,10 @@ public class MenuFragment extends Fragment {
         menu.clear();
         menu.add("BMI");
         menu.add("Weight");
-        menu.add("Setup");
+        menu.add("Sign out");
 
         ArrayAdapter<String> menuAdapter = new ArrayAdapter<>(
-                getActivity(), android.R.layout.simple_list_item_1, menu
-        );
+                getActivity(), android.R.layout.simple_list_item_1, menu);
 
         // get ListView from fragment_menu.xml
         ListView menuList = getView().findViewById(R.id.menu_list);
@@ -48,13 +49,29 @@ public class MenuFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d("MENU", "Click on menu = " + menu.get(position));
 
-                Fragment fragment[] = {new BmiFragment(), new WeightFragment()};
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.main_view, fragment[position])
-                        .addToBackStack(null)
-                        .commit();
+                if(position < 2){
+                    Fragment fragment[] = {new BmiFragment(), new WeightFragment()};
+                    getActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.main_view, fragment[position])
+                            .addToBackStack(null)
+                            .commit();
+                } else {
+                    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                    firebaseAuth.signOut();
+                    getFragmentManager().popBackStack();
+//                    getActivity().getSupportFragmentManager()
+//                            .beginTransaction()
+//                            .replace(R.id.main_view, new LoginFragment())
+//                            .addToBackStack(null)
+//                            .commit();
+                }
+
             }
         });
+
+        TextView eMail = getView().findViewById(R.id.menu_username);
+        FirebaseAuth user = FirebaseAuth.getInstance();
+        if(user.getCurrentUser() != null) eMail.setText(user.getCurrentUser().getEmail());
     }
 }

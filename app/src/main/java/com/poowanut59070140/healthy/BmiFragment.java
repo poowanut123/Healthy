@@ -35,7 +35,7 @@ public class BmiFragment extends Fragment {
                 if(_bmiHeight.getText().toString().isEmpty() || _bmiWeight.getText().toString().isEmpty()){
                     Toast.makeText(getActivity(),"Please fill Height or Weight.",Toast.LENGTH_SHORT).show();
                 } else {
-                    float bmiHeight = Float.parseFloat(_bmiHeight.getText().toString());
+                    float bmiHeight = Float.parseFloat(_bmiHeight.getText().toString())/100;
                     float bmiWeight = Float.parseFloat(_bmiWeight.getText().toString());
                     float BMI = bmiWeight/(bmiHeight*bmiHeight);
                     _bmi.setText(String.format("%.2f", BMI));

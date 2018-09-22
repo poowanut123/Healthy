@@ -1,6 +1,7 @@
 package com.poowanut59070140.healthy.weight;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -35,11 +36,16 @@ public class WeightAdapter extends ArrayAdapter<Weight> {
 
         TextView date = weightItem.findViewById(R.id.weight_item_date);
         TextView weight = weightItem.findViewById(R.id.weight_item_weight);
+        TextView status = weightItem.findViewById(R.id.weight_item_status);
 
         Weight row = weights.get(position);
-        date.setText(row.getData());
-        weight.setText("" + row.getWeight());
+        date.setText(row.getDate());
+        weight.setText(row.getWeight()+" kg");
+        status.setText(row.getStatus());
+
+        if(row.getStatus().equals("UP")) status.setTextColor(Color.rgb(255, 63, 63));
 
         return weightItem;
     }
 }
+
