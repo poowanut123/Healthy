@@ -44,6 +44,7 @@ public class WeightAdapter extends ArrayAdapter<Weight> {
         status.setText(row.getStatus());
 
         if(row.getStatus().equals("UP")) status.setTextColor(Color.rgb(255, 63, 63));
+        if(row.getStatus().equals("DOWN")) status.setTextColor(Color.rgb(1, 135, 19));
 
         return weightItem;
     }

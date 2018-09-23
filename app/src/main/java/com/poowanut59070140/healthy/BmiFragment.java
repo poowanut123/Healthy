@@ -1,5 +1,6 @@
 package com.poowanut59070140.healthy;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -32,13 +33,29 @@ public class BmiFragment extends Fragment {
                 EditText _bmiWeight = getView().findViewById(R.id.bmi_weight);
                 TextView _bmi = getView().findViewById(R.id.bmi_result);
 
+                TextView _textview = getView().findViewById(R.id.textView);
+
                 if(_bmiHeight.getText().toString().isEmpty() || _bmiWeight.getText().toString().isEmpty()){
                     Toast.makeText(getActivity(),"Please fill Height or Weight.",Toast.LENGTH_SHORT).show();
                 } else {
                     float bmiHeight = Float.parseFloat(_bmiHeight.getText().toString())/100;
                     float bmiWeight = Float.parseFloat(_bmiWeight.getText().toString());
                     float BMI = bmiWeight/(bmiHeight*bmiHeight);
+                    if(BMI>30){
+                        _bmi.setTextColor(Color.rgb(255, 63, 63));
+                    }
+
+                    if(BMI>18.5 && BMI <22.9){
+                        _bmi.setTextColor(Color.rgb(31, 176, 14));
+                    }
+
+                    if(BMI<18.5){
+                        _bmi.setTextColor(Color.rgb(247, 243, 5));
+                    }
+
                     _bmi.setText(String.format("%.2f", BMI));
+                    _textview.setText(String.format("Your BMI"));
+
                 }
 
             }
