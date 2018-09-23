@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg3">
+    android:background="@drawable/login_bg2">
 
     <Button
         android:id="@+id/weightForm_back"
@@ -61,7 +61,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:drawableLeft="@drawable/common_google_signin_btn_text_light"
+        android:drawableLeft="@drawable/ic_weight"
         android:ems="10"
         android:hint="@string/weight"
         android:inputType="numberDecimal"

@@ -5,7 +5,7 @@
     android:id="@+id/login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg3">
+    android:background="@drawable/login_bg2">
 
     <ScrollView
         android:layout_width="0dp"
@@ -89,7 +89,7 @@
                 app:layout_constraintHorizontal_bias="0.504"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/common_google_signin_btn_text_light" />
+                app:srcCompat="@drawable/bg2" />
 
 
         </android.support.constraint.ConstraintLayout>
