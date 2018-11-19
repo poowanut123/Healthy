@@ -18,6 +18,7 @@ import com.poowanut59070140.healthy.weight.WeightFragment;
 import com.poowanut59070140.healthy.sleep.SleepFragment;
 import com.poowanut59070140.healthy.weight.Weight;
 import com.poowanut59070140.healthy.weight.WeightFragment;
+import com.poowanut59070140.healthy.post.PostFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +45,7 @@ public class MenuFragment extends Fragment{
         menu.add("BMI");
         menu.add("Weight");
         menu.add("Sleep Time");
+        menu.add("Post");
         menu.add("Sign out");
 
         ArrayAdapter<String> menuAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, menu);
@@ -56,8 +58,8 @@ public class MenuFragment extends Fragment{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d("MENU", "Click on menu = " + menu.get(position));
 
-                if(position <= 2){
-                    Fragment fragments[] = {new BmiFragment(), new WeightFragment(), new SleepFragment()};
+                if(position <= 3){
+                    Fragment fragments[] = {new BmiFragment(), new WeightFragment(), new SleepFragment(),new PostFragment()};
                     changeFragment(fragments[position]);
                 } else {
                     user.signOut();
